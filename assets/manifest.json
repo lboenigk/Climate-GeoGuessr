@@ -261,6 +261,32 @@
       "has_precipitation": false
     },
     {
+      "id": "36ee940e8171",
+      "source_file": "PER_LMA_Lima-Chavez.Intl.AP.846280_TMYx.2011-2025.epw",
+      "city": "Lima",
+      "state": "LMA",
+      "country": "PER",
+      "lat": -12.022,
+      "lon": -77.114,
+      "elevation_m": 34.4,
+      "time_zone": -5.0,
+      "koppen": "BWh",
+      "koppen_note": null,
+      "koppen_description": "Hot desert",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": true
+    },
+    {
       "id": "42066dfbd41a",
       "source_file": "NZL_AUK_Whenuapai-RNZAF.Auckland.931120_TMYx.2011-2025.epw",
       "city": "Auckland",
@@ -481,6 +507,32 @@
       "koppen": "Cfb",
       "koppen_note": null,
       "koppen_description": "Oceanic",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": true
+    },
+    {
+      "id": "aab576ab0765",
+      "source_file": "NGA_ED_Benin.City.652290_TMYx.2009-2023.epw",
+      "city": "Benin City",
+      "state": "ED",
+      "country": "NGA",
+      "lat": 6.317,
+      "lon": 5.1,
+      "elevation_m": 79.0,
+      "time_zone": 1.0,
+      "koppen": "Am",
+      "koppen_note": null,
+      "koppen_description": "Tropical monsoon",
       "difficulty": 3,
       "charts": [
         "psychrometric",
