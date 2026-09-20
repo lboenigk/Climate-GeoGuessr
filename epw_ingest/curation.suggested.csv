@@ -1,4 +1,29 @@
 filename,koppen,difficulty,display_name,enabled
-PRT_Lisboa.085360_INETI.epw,,,,true
-SGP_Singapore.486980_IWEC.epw,,,,true
-USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw,,,,true
+ARE_DU_Dubai.Minhad.Ab.412164_TMYx.2011-2025.epw,BWh,,Dubai,true
+ARG_BA_Buenos.Aires.Obs.875850_TMYx.2011-2025.epw,Cfa,,Buenos Aires,true
+AUS_NSW_Sydney-Hawkesbury-RAAF.Richmond.947530_TMYx.2011-2025.epw,Cfa,,Sydney,true
+BRA_RJ_Rio.de.Janeiro-Santos.Dumont.AP.837550_TMYx.2011-2025.epw,Aw,,Rio de Janeiro,true
+CAN_BC_Vancouver.Harbour.CS.712010_TMYx.2011-2025.epw,Csb,,Vancouver,true
+CHN_BJ_Beijing-Capital.Intl.AP.545110_TMYx.2011-2025.epw,Dwa,,Beijing,true
+CHN_SH_Shanghai-Hongqiao.Intl.AP.583670_TMYx.2004-2018.epw,Cfa,,Shanghai,true
+COD_KN_Kinshasa-Ndjili.Intl.AP.642100_TMYx.2011-2025.epw,Aw,,Kinshasa,true
+COL_CUN_Bogota-Eldorado.Intl.AP.802220_TMYx.2011-2025.epw,Csb,,Bogotá,true
+DNK_HS_Copenhagen-Kastrup.AP.061800_TMYx.2011-2025.epw,Cfb,,Copenhagen,true
+ESP_MD_Madrid-Getafe.AFB.082240_TMYx.2011-2025.epw,Csa,,Madrid,true
+GBR_ENG_London-Gatwick.AP.037760_TMYx.2011-2025.epw,Cfb,,London,true
+IND_DL_New.Delhi-Safdarjung.AP.421820_ISHRAE2014.epw,BSh,,New Delhi,true
+IRN_TE_Tehran-Khomeini.Intl.AP.407300_TMYx.2011-2025.epw,BSh,,Tehran,true
+ITA_LZ_Rome-Fiumicino-da.Vinci.AP.162420_TMYx.2011-2025.epw,Csa,,Rome,true
+JPN_TK_Tokyo-Chiyoda.476620_TMYx.2004-2018.epw,Cfa,,Tokyo,true
+MAR_CS_Casablanca-Mohammed.Intl.AP.601560_TMYx.2004-2018.epw,BSk,,Casablanca,true
+MEX_CMX_Cuidad.Mexico-Mexico.City.Intl.AP-Juarez.Intl.AP.766793_TMYx.2011-2025.epw,Cwb,,Mexico City,true
+MLI_TT_Timbuktu-Tombouctou.Intl.AP.612230_TMYx.2009-2023.epw,BWh,,Timbuktu,true
+NGA_LA_Lagos-Muhammed.Intl.AP.652010_TMYx.2004-2018.epw,Aw,,Lagos,true
+NZL_AUK_Whenuapai-RNZAF.Auckland.931120_TMYx.2011-2025.epw,Cfb,,Auckland,true
+PRI_CB_Cape.San.Juan.CGLS.785355_TMYx.2011-2025.epw,Aw,,Cape San Juan,true
+PRT_Lisboa.085360_INETI.epw,,,Lisbon,true
+SGP_Singapore.486980_IWEC.epw,,,Singapore,true
+USA_GA_Dallas-Paulding.Northwest.Atlanta.AP.720714_TMYx.2011-2025.epw,Cfa,,Atlanta,true
+USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw,,,Boston,true
+USA_CA_San.Francisco-Presidio.994016_TMYx.2011-2025.epw,Csb,,San Francisco,true
+ZAF_GT_Pretoria.Met.Station.682620_TMYx.2009-2023.epw,BSh,,Pretoria,true

@@ -1,0 +1,24 @@
+# flyctl launch added from .gitignore
+**/__pycache__
+**/*.pyc
+**/.DS_Store
+
+# Virtualenvs must never live in a cloud-synced folder — ~9,000 files will peg
+# the sync client and stall every read in the project. See the Makefile.
+**/.venv
+**/venv
+
+# Raw weather files are committed on purpose: ~1.5 MB each and freely
+# redistributable, and without them nobody who clones this can run `make build`
+# or add a city. Revisit if the pool grows past a few dozen.
+**/epw_ingest/raw/*.zip
+
+# Runtime state
+**/game.db
+**/game.db-wal
+**/game.db-shm
+
+# Baked assets: commit these if you want a zero-build deploy, otherwise
+# regenerate with `make build`.
+# assets/
+fly.toml
