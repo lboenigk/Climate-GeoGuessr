@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Climate GeoGuessr</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.css">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>Climate<span>Guessr</span></h1>
+  <dl class="scoreboard">
+    <div><dt>Round</dt><dd id="round-no">–</dd></div>
+    <div><dt>Total</dt><dd id="total-score">0</dd></div>
+    <div><dt>Last</dt><dd id="last-score">–</dd></div>
+    <div id="multiplier-box" hidden><dt>Hints</dt><dd id="multiplier">×1.00</dd></div>
+  </dl>
+</header>
+
+<main id="game" class="layout" hidden>
+
+  <section class="panel charts" aria-labelledby="charts-h">
+    <h2 id="charts-h" class="sr-only">Climate charts for this location</h2>
+
+    <div class="tabs" role="tablist" aria-label="Chart type" id="chart-tabs"></div>
+
+    <div class="chart-stage">
+      <div id="chart" role="tabpanel" aria-live="polite"></div>
+      <div id="chart-loading" class="loading">Loading charts…</div>
+    </div>
+
+    <p id="chart-blurb" class="blurb"></p>
+  </section>
+
+  <aside class="panel guess" aria-labelledby="guess-h">
+    <h2 id="guess-h">Where on Earth is this?</h2>
+
+    <p class="attempts-line">
+      <span>Attempt <strong id="attempt-n">1</strong> of <strong id="attempt-max">3</strong></span>
+      <span>This guess is worth <strong id="attempt-mult">100%</strong></span>
+    </p>
+
+    <div id="map" aria-label="Guess map. Click to place your guess."></div>
+    <p id="guess-readout" class="readout">Click the map to drop a pin.</p>
+
+    <!-- Populated on a miss. role="alert" is assertive by default, so the
+         direction is announced rather than only shown — it is the only
+         feedback a player gets between attempts. -->
+    <div id="miss" class="miss" role="alert" hidden></div>
+
+    <details class="coords">
+      <summary>Enter coordinates instead</summary>
+      <div class="coord-fields">
+        <label>Latitude
+          <input type="number" id="lat-input" min="-90" max="90" step="0.1" placeholder="42.4">
+        </label>
+        <label>Longitude
+          <input type="number" id="lon-input" min="-180" max="180" step="0.1" placeholder="-71.0">
+        </label>
+        <button type="button" id="set-coords" class="ghost">Place pin</button>
+      </div>
+    </details>
+
+    <label class="climate-pick">
+      Climate class <span class="optional">(optional — worth up to 30%)</span>
+      <select id="koppen-select">
+        <option value="">Don't guess — score on distance only</option>
+      </select>
+    </label>
+
+    <button type="button" id="submit-guess" class="primary" disabled>Submit guess</button>
+
+    <section class="hints" aria-labelledby="hints-h">
+      <h3 id="hints-h">Hints</h3>
+      <p class="hint-note">Each hint costs 15% of the round, down to a floor of 40%.</p>
+      <div id="hint-buttons"></div>
+    </section>
+  </aside>
+</main>
+
+<div id="boot" class="boot">
+  <h2>Climate GeoGuessr</h2>
+  <p id="boot-msg">Starting…</p>
+  <button type="button" id="start-btn" class="primary" hidden>Play</button>
+</div>
+
+<!-- Result overlay -->
+<div id="result" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="result-h">
+  <div class="result-card">
+    <h2 id="result-h">–</h2>
+    <p class="answer-line" id="answer-line"></p>
+    <div class="score-big"><span id="result-score">0</span><small>points</small></div>
+    <ul class="breakdown" id="result-breakdown"></ul>
+    <button type="button" id="next-round" class="primary">Next round</button>
+  </div>
+</div>
+
+<div id="hint-modal" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="hint-h">
+  <div class="result-card wide">
+    <h2 id="hint-h">Hint</h2>
+    <div id="hint-body"></div>
+    <button type="button" id="hint-close" class="primary">Close</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

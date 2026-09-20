@@ -1,0 +1,17 @@
+# Pinned — the ladybug chart APIs shift between releases, and pandas 3 broke
+# ladybug-charts outright (it still calls pd.date_range(freq="H")).
+lbt-ladybug==0.27.206
+ladybug-core==0.44.61
+ladybug-charts==1.19.4
+ladybug-comfort==0.19.10
+ladybug-geometry==1.35.6
+ladybug-radiance==0.2.12
+plotly==7.1.0
+numpy==1.26.4
+pandas==2.1.4
+
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+
+# Optional: PNG fallbacks for mobile / no-JS. Only needed by `build_assets.py --png`.
+kaleido==1.4.0

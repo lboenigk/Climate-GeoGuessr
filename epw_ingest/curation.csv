@@ -1,0 +1,10 @@
+filename,koppen,difficulty,display_name,enabled
+# Optional overrides, one row per EPW filename. Leave a cell blank to accept the
+# build script's own value. `difficulty` is 1 (easy) to 5 (hard); `enabled=false`
+# drops a location from rotation without deleting the file.
+# EnergyPlus TMY3/IWEC files carry no precipitation, so `koppen` almost always
+# has to be filled in by hand here. Run the build once and it writes
+# curation.suggested.csv with every filename already listed.
+USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw,Dfa,2,Boston,true
+SGP_Singapore.486980_IWEC.epw,Af,1,Singapore,true
+PRT_Lisboa.085360_INETI.epw,Csa,3,Lisbon,true

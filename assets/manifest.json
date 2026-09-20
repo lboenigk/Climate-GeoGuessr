@@ -1,0 +1,82 @@
+{
+  "locations": [
+    {
+      "id": "34d1126d8cdc",
+      "source_file": "USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw",
+      "city": "Boston",
+      "state": "MA",
+      "country": "USA",
+      "lat": 42.37,
+      "lon": -71.02,
+      "elevation_m": 6.0,
+      "time_zone": -5.0,
+      "koppen": "Dfa",
+      "koppen_note": "from curation.csv",
+      "koppen_description": "Hot-summer continental",
+      "difficulty": 2,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": false
+    },
+    {
+      "id": "42d088fa9ff5",
+      "source_file": "SGP_Singapore.486980_IWEC.epw",
+      "city": "Singapore",
+      "state": "-",
+      "country": "SGP",
+      "lat": 1.37,
+      "lon": 103.98,
+      "elevation_m": 16.0,
+      "time_zone": 8.0,
+      "koppen": "Af",
+      "koppen_note": "from curation.csv",
+      "koppen_description": "Tropical rainforest",
+      "difficulty": 1,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": false
+    },
+    {
+      "id": "ce4bead59894",
+      "source_file": "PRT_Lisboa.085360_INETI.epw",
+      "city": "Lisbon",
+      "state": "",
+      "country": "PRT",
+      "lat": 38.73,
+      "lon": -9.15,
+      "elevation_m": 71.0,
+      "time_zone": 0.0,
+      "koppen": "Csa",
+      "koppen_note": "from curation.csv",
+      "koppen_description": "Hot-summer Mediterranean",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": false
+    }
+  ]
+}
