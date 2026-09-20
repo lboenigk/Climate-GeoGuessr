@@ -7,8 +7,9 @@ __pycache__/
 .venv/
 venv/
 
-# Raw weather files: ~1.5 MB each, redistributable but bulky. Never served.
-epw_ingest/raw/*.epw
+# Raw weather files are committed on purpose: ~1.5 MB each and freely
+# redistributable, and without them nobody who clones this can run `make build`
+# or add a city. Revisit if the pool grows past a few dozen.
 epw_ingest/raw/*.zip
 
 # Runtime state
