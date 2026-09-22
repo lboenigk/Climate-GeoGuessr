@@ -18,6 +18,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "_site"
 
+# Run as `python scripts/static_check.py`, so the repo root is not on the path.
+sys.path.insert(0, str(ROOT))
+from epw_ingest.catalog import PRECIP_RANGE  # noqa: E402
+
 passed, failed = 0, 0
 
 
@@ -89,6 +93,27 @@ def main() -> int:
     check(all(a["lat"] is not None and a["lon"] is not None for a in (
               json.loads((SITE / "assets" / "answers" / f"{e['id']}.json").read_text())
               for e in manifest)), "every answer has coordinates")
+
+    print("\nPrecipitation chart")
+    advertised = [e for e in manifest if "precipitation" in e.get("charts", [])]
+    check(len(advertised) == sum(1 for e in manifest if e.get("has_precipitation")),
+          f"offered exactly where data exists ({len(advertised)}/{len(manifest)})")
+    check(all(e.get("has_precipitation") for e in advertised),
+          "never offered for a location with no usable precipitation")
+
+    # The whole point of a locked axis is that it cannot drift. An auto-scaled
+    # rainfall chart tells a player the answer before they read it: a bar chart
+    # topping out at 400 mm and one topping out at 30 mm look identical.
+    unpinned = []
+    for entry in advertised:
+        fig = json.loads(
+            (SITE / "assets" / "charts" / entry["id"] / "precipitation.json").read_text())
+        rng = fig.get("layout", {}).get("yaxis", {}).get("range")
+        if rng != list(PRECIP_RANGE):
+            unpinned.append(f"{entry['id']}: {rng}")
+    check(not unpinned,
+          f"y-axis pinned to {PRECIP_RANGE} everywhere"
+          f"{' — ' + str(unpinned[:3]) if unpinned else ''}")
 
     print("\nNo absolute asset paths")
     # A leading slash resolves to the domain root, not /<repo>/, so it 404s on

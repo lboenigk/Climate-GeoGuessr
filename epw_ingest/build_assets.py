@@ -1,7 +1,7 @@
 """Offline build: EPW files in -> sanitized chart assets + answer key out.
 
 Run this whenever you add or replace an EPW. Nothing here happens at request
-time: parsing an 8760-row EPW and rendering seven Plotly figures takes seconds,
+time: parsing an 8760-row EPW and rendering eight Plotly figures takes seconds,
 which is fine once per city and unacceptable per round.
 
     python -m epw_ingest.build_assets                 # JSON only, fast
@@ -215,7 +215,15 @@ def build_one(epw_path: Path, cur: Curation, write_png: bool) -> dict:
 
     charts_written = []
     for spec in CHARTS:
-        fig = renderers.build(spec.id, epw)
+        # Not every location can draw every chart. Roughly a third of TMY
+        # files have no usable precipitation, and a rainfall chart built from
+        # the 999 sentinel would be worse than no chart at all — it would read
+        # as a rainforest. The manifest's per-location `charts` list is what
+        # tells the client which tabs to offer.
+        if spec.id == "precipitation" and not precip:
+            continue
+
+        fig = renderers.build(spec.id, epw, precip=precip)
         clean = sanitize_figure(fig, loc)
 
         leaks = audit(clean, loc)

@@ -24,6 +24,14 @@ HUMIDITY_RANGE = (0.0, 100.0)     # % RH
 RADIATION_RANGE = (0.0, 1000.0)   # Wh/m2
 MAX_HUMIDITY_RATIO = 0.03         # kg water / kg dry air
 
+# Monthly precipitation total, mm. Sized for a wet tropical month rather than
+# for this pool's wettest (Kinshasa, ~430 mm): the range has to hold for cities
+# added later, and a monsoon station can pass 500. The cost is that arid
+# climates draw as a nearly flat row — which is the correct read, and the exact
+# millimetres are still in the summary hint. Bars above the cap are clipped by
+# the axis but keep their true value on hover.
+PRECIP_RANGE = (0.0, 500.0)
+
 # "core" charts always ship with the round. "hint" charts cost score, and are
 # stored outside the static mount so their URLs cannot be guessed.
 TIER_CORE = "core"
@@ -52,6 +60,15 @@ CHARTS: List[ChartSpec] = [
     ChartSpec(
         "humidity", "Relative humidity heat map", TIER_CORE,
         "Separates maritime from continental, and finds monsoon onsets.",
+    ),
+    # Only built where the EPW carries usable precipitation — roughly a third
+    # of TMY files leave the field at its missing sentinel. `charts` in the
+    # manifest is per-location for exactly this reason, and the client only
+    # offers tabs for what a location actually has.
+    ChartSpec(
+        "precipitation", "Precipitation", TIER_CORE,
+        "Monthly rainfall totals. Wet-season timing is the other half of the "
+        "Köppen class — the half no temperature chart can show you.",
     ),
     ChartSpec(
         "radiation", "Global horizontal radiation", TIER_CORE,

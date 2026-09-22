@@ -2,7 +2,7 @@
 
 A guessing game built on EPW weather files. You get a year of climate data for
 somewhere on Earth — psychrometric chart, temperature and humidity heat maps,
-radiation, wind rose — and you drop a pin on a map. Scoring blends how close you
+precipitation, radiation, wind rose, sun path — and you drop a pin on a map. Scoring blends how close you
 got with whether you named the right Köppen climate class.
 
 Charts are generated locally with `ladybug` + `ladybug-charts` (the same library
@@ -54,7 +54,7 @@ web/                          Plotly.js charts + MapLibre guess map
 
 ### Why precompute
 
-EPW files are 8,760-row hourly datasets. Parsing one and rendering seven Plotly
+EPW files are 8,760-row hourly datasets. Parsing one and rendering eight Plotly
 figures takes several seconds — fine once per city, unacceptable per round. The
 build bakes figure JSON to disk; the server only ever hands out URLs, and the
 browser does the rendering. The runtime image doesn't even install ladybug.
@@ -100,6 +100,20 @@ hand can still read the answer. That is a deliberate trade for free, always-on
 hosting — see *Hosting*. Everything else in this section still holds, and
 matters more now, not less: the charts themselves are the only thing standing
 between a player and the answer.
+
+**Precipitation is not available everywhere.** Roughly a third of TMY files
+leave liquid precipitation at the 999 sentinel or flat zero, so the chart is
+built only where `_monthly_precip` finds usable data — 26 of the current 30
+locations. The manifest's per-location `charts` list is what carries this, and
+the client only renders tabs for charts a location actually has. Never fall
+back to drawing the sentinel: a chart built from 999s reads as a rainforest,
+which is worse than no chart at all.
+
+Its y-axis is pinned to `PRECIP_RANGE` (0–500 mm/month), sized for a monsoon
+month rather than for this pool's wettest. The cost is that arid and temperate
+climates draw as short bars — the *shape* still reads, which is what the Köppen
+class turns on, and the exact millimetres remain in the summary hint. A bar
+above the cap is clipped by the axis but keeps its true value on hover.
 
 **Fixed axis ranges.** Every chart is locked to the same global ranges
 (`catalog.py`). Auto-scaled axes would leak the answer outright — a colorbar
