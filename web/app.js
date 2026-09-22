@@ -1,8 +1,8 @@
 /* Climate GeoGuessr - round loop.
  *
- * The client deliberately knows nothing it shouldn't: it holds a round_id and
- * a list of chart URLs, and finds out where the round was only in the response
- * to POST /api/guess.
+ * The client holds a round_id and a list of chart URLs, and fetches the answer
+ * only once a guess is committed. On a static host that is a convention rather
+ * than a guarantee — see the note at the top of engine.js.
  */
 (() => {
   "use strict";
@@ -39,18 +39,10 @@
     return id;
   }
 
-  async function api(path, body) {
-    const res = await fetch(path, {
-      method: body ? "POST" : "GET",
-      headers: { "Content-Type": "application/json" },
-      body: body ? JSON.stringify(body) : undefined,
-    });
-    if (!res.ok) {
-      const detail = await res.json().catch(() => ({}));
-      throw new Error(detail.detail || `${res.status} ${res.statusText}`);
-    }
-    return res.json();
-  }
+  // The game runs entirely in the browser against the baked assets — see
+  // engine.js. Kept behind the same call signature the FastAPI client used, so
+  // everything below this line is unaware there is no server.
+  const api = (path, body) => window.climateApi(path, body);
 
   /* --- map -------------------------------------------------------------- */
   // OpenFreeMap: keyless, OSM-derived vector tiles, country and state borders
@@ -464,7 +456,7 @@
     try {
       meta = await api("/api/meta");
     } catch (err) {
-      el("boot-msg").textContent = "Could not reach the server: " + err.message;
+      el("boot-msg").textContent = "Could not load the game data: " + err.message;
       return;
     }
 

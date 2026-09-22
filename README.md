@@ -16,7 +16,7 @@ the CBE Clima Tool was built on), not scraped or iframed from anyone's server.
 make venv                       # Python 3.12 venv + pinned deps
 # drop .epw files into epw_ingest/raw/   (see the README in that folder)
 make build                      # bake charts -> assets/
-make run                        # http://localhost:8000
+make serve                      # build _site/ and preview on :8000
 make check                      # end-to-end test, including the leak checks
 ```
 
@@ -76,18 +76,30 @@ raw JSON and matched latitude `42` against hour-of-day tick labels.
 **Guessable URLs.** Asset folders are `sha1(filename)[:12]`, not
 `USA_MA_Boston`. Players open the Network tab.
 
-**Hint bypass.** A hint is worth score to reveal, so it cannot live in the
-static mount — the opaque id is already visible on the core chart URLs, and
-`/charts/<id>/summary.json` would hand it over free. Hint assets go in
-`assets/hints/`, which nothing serves; `POST /api/hint` returns their contents
-inline after charging the round.
+**Hint bypass.** A hint is worth score to reveal. The server kept hint assets
+in `assets/hints/`, outside the static mount, and returned them inline only
+after charging the round. On Pages that directory is published like any other,
+so the charge is enforced in `engine.js` and is honour-system — the same trade
+as the answer key above.
 
 The sun path used to be gated this way too. It isn't any more — see *Attempts*
 below — and it now ships as an ordinary core chart.
 
-**The answer key.** `assets/manifest.json` sits one level above the mounted
-`assets/charts/` directory, so no URL reaches it. The answer crosses the wire
-only in the response to `POST /api/guess`.
+**The answer key.** Under the retired FastAPI server this was airtight:
+`assets/manifest.json` sat one level above the mounted `assets/charts/`
+directory, so no URL reached it, and the answer crossed the wire only in the
+response to `POST /api/guess`.
+
+On GitHub Pages it cannot be. A static host has no code to withhold anything,
+so the answer key must be reachable by the browser. What survives is the
+*shape* of the guarantee: answers are split per-location under
+`assets/answers/<id>.json` and fetched only once a guess is committed, so
+nothing in the page load or in a round's traffic names a place. A player who
+opens devtools, reads the opaque id off a chart URL and fetches that path by
+hand can still read the answer. That is a deliberate trade for free, always-on
+hosting — see *Hosting*. Everything else in this section still holds, and
+matters more now, not less: the charts themselves are the only thing standing
+between a player and the answer.
 
 **Fixed axis ranges.** Every chart is locked to the same global ranges
 (`catalog.py`). Auto-scaled axes would leak the answer outright — a colorbar
@@ -170,15 +182,53 @@ you inherit that bias players learn to always guess north and the game dies.
 
 ---
 
-## Deployment
+## Hosting
 
-`Dockerfile` is two-stage: the build stage renders assets with ladybug, the
-runtime stage copies `assets/` and installs only FastAPI and uvicorn. Works on
-Fly.io, Railway or Render as-is. Mount a volume at `/data` to keep scores across
-deploys, or point `CLIMATE_DB` elsewhere.
+The game is deployed as a **static site on GitHub Pages**. There is no server
+in production: `web/engine.js` runs the round loop in the browser against the
+baked assets, implementing the same four calls `app/main.py` used to serve.
 
-To deploy with prebuilt assets instead, run `make build` locally, commit
-`assets/`, and drop the build stage.
+```bash
+make build     # only when EPW files change - bakes charts with ladybug
+make serve     # preview _site/ exactly as Pages will serve it
+git push       # .github/workflows/pages.yml deploys on every push to main
+```
+
+`make build` is the slow, dependency-heavy step and stays local; its output
+(`assets/charts/`, `assets/hints/`, `assets/manifest.json`) is committed. CI
+only runs `build_static.py` and `build_site.py`, which are stdlib-only, so the
+workflow needs no `pip install`.
+
+**One-time setup:** Settings -> Pages -> Source: **GitHub Actions**.
+
+### What the static build changes
+
+`build_static.py` splits `assets/manifest.json` into two published pieces:
+
+| file | holds | fetched |
+| --- | --- | --- |
+| `assets/index.json` | opaque ids, chart lists, game constants | at boot |
+| `assets/answers/<id>.json` | city, coordinates, Köppen class | after a guess is committed |
+
+`manifest.json` itself is never published. Nothing in the page load names a
+place, so the Network tab still shows nothing during a round — but this is now
+a convention, not a guarantee. See *Not leaking the answer*.
+
+### Paths must stay relative
+
+A project Pages site is served from `/<repo>/`, not `/`. Every asset reference
+in `web/` is relative for that reason; a leading slash 404s in production while
+working fine against `localhost:8000`. `make serve` reproduces the root-served
+case — to check the subpath case, serve `_site/` from inside a directory named
+after the repo.
+
+### The retired server
+
+`app/`, `Dockerfile` and `fly.toml` still work and still pass `make check`.
+They are what you would go back to if you wanted the answer key off the client
+again — `engine.js` deliberately keeps the FastAPI response shapes, so
+restoring `app.js`'s `fetch` wrapper is the whole change. `make run` still
+starts it, but it does not serve `assets/`, so use `make serve` to preview.
 
 ---
 
