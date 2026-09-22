@@ -11,6 +11,16 @@ from the filename, so `USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw` is fine.
 - **Climate.OneBuilding.org**: https://climate.onebuilding.org (better global
   coverage, especially Africa / South America / Central Asia)
 
+### Prefer a recent `TMYx` vintage
+
+Take `TMYx.2007-2021` or newer where it exists. Older formats carry no liquid
+precipitation: `TMY3` leaves ~83% of hours at the 999 sentinel, `IWEC` and
+`INETI` files have none at all. Without it there is no precipitation chart and
+no automatic Köppen class, so you have to hand-enter one in `curation.csv`.
+Directory listings show every vintage side by side — the station number in the
+filename is what identifies the site, so `..._725090_TMYx.2011-2025` is the same
+weather station as `..._725090_TMY3`, just a better file.
+
 ## Picking the first 20
 
 Aim for spread, not for cities you like. The game is unplayable if every round is

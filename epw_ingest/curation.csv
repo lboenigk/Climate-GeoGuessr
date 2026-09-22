@@ -8,7 +8,7 @@ AUS_NSW_Sydney-Hawkesbury-RAAF.Richmond.947530_TMYx.2011-2025.epw,,,Sydney,true
 BRA_RJ_Rio.de.Janeiro-Santos.Dumont.AP.837550_TMYx.2011-2025.epw,,,Rio de Janeiro,true
 CAN_BC_Vancouver.Harbour.CS.712010_TMYx.2011-2025.epw,,,Vancouver,true
 CHN_BJ_Beijing-Capital.Intl.AP.545110_TMYx.2011-2025.epw,,,Beijing,true
-CHN_SH_Shanghai-Hongqiao.Intl.AP.583670_TMYx.2004-2018.epw,Cfa,,Shanghai,true
+CHN_SH_Shanghai-Hongqiao.Intl.AP.583670_TMYx.2011-2025.epw,Cfa,,Shanghai,true
 COD_KN_Kinshasa-Ndjili.Intl.AP.642100_TMYx.2011-2025.epw,,,Kinshasa,true
 COL_CUN_Bogota-Eldorado.Intl.AP.802220_TMYx.2011-2025.epw,,,Bogotá,true
 DNK_HS_Copenhagen-Kastrup.AP.061800_TMYx.2011-2025.epw,,,Copenhagen,true
@@ -24,11 +24,11 @@ MLI_TT_Timbuktu-Tombouctou.Intl.AP.612230_TMYx.2009-2023.epw,,,Timbuktu,true
 NGA_LA_Lagos-Muhammed.Intl.AP.652010_TMYx.2004-2018.epw,,,Lagos,true
 NZL_AUK_Whenuapai-RNZAF.Auckland.931120_TMYx.2011-2025.epw,,,Auckland,true
 PRI_CB_Cape.San.Juan.CGLS.785355_TMYx.2011-2025.epw,,,Cape San Juan,true
-PRT_Lisboa.085360_INETI.epw,Csa,,Lisbon,true
-SGP_Singapore.486980_IWEC.epw,Af,,Singapore,true
+PRT_LB_Lisboa.Portela.AP.085360_TMYx.2009-2023.epw,,,Lisbon,true
+SGP_SG_Singapore-Changi.Intl.AP.486980_TMYx.2011-2025.epw,,,Singapore,true
 USA_CA_San.Francisco-Presidio.994016_TMYx.2011-2025.epw,,,San Francisco,true
 USA_GA_Dallas-Paulding.Northwest.Atlanta.AP.720714_TMYx.2011-2025.epw,,,Atlanta,true
-USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw,Dfa,,Boston,true
+USA_MA_Boston-Logan.Intl.AP.725090_TMYx.2007-2021.epw,,,Boston,true
 ZAF_GT_Pretoria.Met.Station.682620_TMYx.2009-2023.epw,,,Pretoria,true
 PER_LMA_Lima-Chavez.Intl.AP.846280_TMYx.2011-2025.epw,,,Lima,true
 NGA_ED_Benin.City.652290_TMYx.2009-2023.epw,,,Benin City,true

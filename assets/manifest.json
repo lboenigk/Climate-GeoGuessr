@@ -82,6 +82,33 @@
       "has_precipitation": true
     },
     {
+      "id": "0c2c89a7ede6",
+      "source_file": "CHN_SH_Shanghai-Hongqiao.Intl.AP.583670_TMYx.2011-2025.epw",
+      "city": "Shanghai",
+      "state": "SH",
+      "country": "CHN",
+      "lat": 31.198,
+      "lon": 121.336,
+      "elevation_m": 3.0,
+      "time_zone": 8.0,
+      "koppen": "Cfa",
+      "koppen_note": "from curation.csv",
+      "koppen_description": "Humid subtropical",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "precipitation",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": true
+    },
+    {
       "id": "102c3a7374b8",
       "source_file": "COL_CUN_Bogota-Eldorado.Intl.AP.802220_TMYx.2011-2025.epw",
       "city": "Bogot\u00e1",
@@ -190,6 +217,33 @@
       "has_precipitation": true
     },
     {
+      "id": "2ce02b0c98ac",
+      "source_file": "SGP_SG_Singapore-Changi.Intl.AP.486980_TMYx.2011-2025.epw",
+      "city": "Singapore",
+      "state": "SG",
+      "country": "SGP",
+      "lat": 1.3678,
+      "lon": 103.9826,
+      "elevation_m": 6.7,
+      "time_zone": 8.0,
+      "koppen": "Af",
+      "koppen_note": null,
+      "koppen_description": "Tropical rainforest",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "precipitation",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": true
+    },
+    {
       "id": "321b33d2e1b9",
       "source_file": "IND_DL_New.Delhi-Safdarjung.AP.421820_ISHRAE2014.epw",
       "city": "New Delhi",
@@ -244,32 +298,6 @@
       "has_precipitation": true
     },
     {
-      "id": "34d1126d8cdc",
-      "source_file": "USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw",
-      "city": "Boston",
-      "state": "MA",
-      "country": "USA",
-      "lat": 42.37,
-      "lon": -71.02,
-      "elevation_m": 6.0,
-      "time_zone": -5.0,
-      "koppen": "Dfa",
-      "koppen_note": "from curation.csv",
-      "koppen_description": "Hot-summer continental",
-      "difficulty": 3,
-      "charts": [
-        "psychrometric",
-        "temperature",
-        "humidity",
-        "radiation",
-        "diurnal",
-        "windrose",
-        "sunpath"
-      ],
-      "has_png": false,
-      "has_precipitation": false
-    },
-    {
       "id": "36ee940e8171",
       "source_file": "PER_LMA_Lima-Chavez.Intl.AP.846280_TMYx.2011-2025.epw",
       "city": "Lima",
@@ -322,32 +350,6 @@
       ],
       "has_png": false,
       "has_precipitation": true
-    },
-    {
-      "id": "42d088fa9ff5",
-      "source_file": "SGP_Singapore.486980_IWEC.epw",
-      "city": "Singapore",
-      "state": "-",
-      "country": "SGP",
-      "lat": 1.37,
-      "lon": 103.98,
-      "elevation_m": 16.0,
-      "time_zone": 8.0,
-      "koppen": "Af",
-      "koppen_note": "from curation.csv",
-      "koppen_description": "Tropical rainforest",
-      "difficulty": 3,
-      "charts": [
-        "psychrometric",
-        "temperature",
-        "humidity",
-        "radiation",
-        "diurnal",
-        "windrose",
-        "sunpath"
-      ],
-      "has_png": false,
-      "has_precipitation": false
     },
     {
       "id": "4f25b2627f7b",
@@ -416,6 +418,33 @@
       "koppen": "Cfa",
       "koppen_note": null,
       "koppen_description": "Humid subtropical",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "precipitation",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": true
+    },
+    {
+      "id": "6fa585715313",
+      "source_file": "USA_MA_Boston-Logan.Intl.AP.725090_TMYx.2007-2021.epw",
+      "city": "Boston",
+      "state": "MA",
+      "country": "USA",
+      "lat": 42.361,
+      "lon": -71.01,
+      "elevation_m": 3.7,
+      "time_zone": -5.0,
+      "koppen": "Dfa",
+      "koppen_note": null,
+      "koppen_description": "Hot-summer continental",
       "difficulty": 3,
       "charts": [
         "psychrometric",
@@ -647,32 +676,6 @@
       "has_precipitation": true
     },
     {
-      "id": "ce4bead59894",
-      "source_file": "PRT_Lisboa.085360_INETI.epw",
-      "city": "Lisbon",
-      "state": "",
-      "country": "PRT",
-      "lat": 38.73,
-      "lon": -9.15,
-      "elevation_m": 71.0,
-      "time_zone": 0.0,
-      "koppen": "Csa",
-      "koppen_note": "from curation.csv",
-      "koppen_description": "Hot-summer Mediterranean",
-      "difficulty": 3,
-      "charts": [
-        "psychrometric",
-        "temperature",
-        "humidity",
-        "radiation",
-        "diurnal",
-        "windrose",
-        "sunpath"
-      ],
-      "has_png": false,
-      "has_precipitation": false
-    },
-    {
       "id": "dc122672c56a",
       "source_file": "ITA_LZ_Rome-Fiumicino-da.Vinci.AP.162420_TMYx.2011-2025.epw",
       "city": "Rome",
@@ -727,32 +730,6 @@
       "has_precipitation": true
     },
     {
-      "id": "f44700046769",
-      "source_file": "CHN_SH_Shanghai-Hongqiao.Intl.AP.583670_TMYx.2004-2018.epw",
-      "city": "Shanghai",
-      "state": "SH",
-      "country": "CHN",
-      "lat": 31.198,
-      "lon": 121.336,
-      "elevation_m": 3.0,
-      "time_zone": 8.0,
-      "koppen": "Cfa",
-      "koppen_note": "from curation.csv",
-      "koppen_description": "Humid subtropical",
-      "difficulty": 3,
-      "charts": [
-        "psychrometric",
-        "temperature",
-        "humidity",
-        "radiation",
-        "diurnal",
-        "windrose",
-        "sunpath"
-      ],
-      "has_png": false,
-      "has_precipitation": false
-    },
-    {
       "id": "fb1d18fbac15",
       "source_file": "ESP_MD_Madrid-Getafe.AFB.082240_TMYx.2011-2025.epw",
       "city": "Madrid",
@@ -792,6 +769,33 @@
       "koppen": "Dwa",
       "koppen_note": null,
       "koppen_description": "Monsoon hot-summer continental",
+      "difficulty": 3,
+      "charts": [
+        "psychrometric",
+        "temperature",
+        "humidity",
+        "precipitation",
+        "radiation",
+        "diurnal",
+        "windrose",
+        "sunpath"
+      ],
+      "has_png": false,
+      "has_precipitation": true
+    },
+    {
+      "id": "fc7022875f49",
+      "source_file": "PRT_LB_Lisboa.Portela.AP.085360_TMYx.2009-2023.epw",
+      "city": "Lisbon",
+      "state": "LB",
+      "country": "PRT",
+      "lat": 38.781,
+      "lon": -9.136,
+      "elevation_m": 123.0,
+      "time_zone": 0.0,
+      "koppen": "Csa",
+      "koppen_note": null,
+      "koppen_description": "Hot-summer Mediterranean",
       "difficulty": 3,
       "charts": [
         "psychrometric",

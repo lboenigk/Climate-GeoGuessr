@@ -101,13 +101,26 @@ hosting — see *Hosting*. Everything else in this section still holds, and
 matters more now, not less: the charts themselves are the only thing standing
 between a player and the answer.
 
-**Precipitation is not available everywhere.** Roughly a third of TMY files
-leave liquid precipitation at the 999 sentinel or flat zero, so the chart is
-built only where `_monthly_precip` finds usable data — 26 of the current 30
-locations. The manifest's per-location `charts` list is what carries this, and
-the client only renders tabs for charts a location actually has. Never fall
-back to drawing the sentinel: a chart built from 999s reads as a rainforest,
-which is worse than no chart at all.
+**Precipitation depends on the EPW vintage, not the city.** The chart is built
+only where `_monthly_precip` finds usable data. All 30 current locations have
+it, but that took a deliberate file swap: the legacy formats carry no rainfall
+at all, and the failure is silent in three different ways.
+
+| Vintage | Liquid precipitation |
+| --- | --- |
+| `TMYx.2007-2021` … `TMYx.2011-2025` | present |
+| `TMY3` | ~83 % of hours are the 999 sentinel |
+| `IWEC`, older `TMYx` | every hour is exactly `0.0` |
+| `INETI` | every hour is `999` |
+
+Flat zero is the dangerous one — it is not flagged as missing, and summing it
+gives a confident, completely wrong "desert". `_monthly_precip` rejects all
+three (>50 % sentinel, or a zero annual total) and the chart is then simply not
+built. Never fall back to drawing the sentinel: a chart built from 999s reads
+as a rainforest, which is worse than no chart at all.
+
+If a city has no precipitation, look for a newer `TMYx` file at the same WMO
+station before giving up on it — that is usually all it takes.
 
 Its y-axis is pinned to `PRECIP_RANGE` (0–500 mm/month), sized for a monsoon
 month rather than for this pool's wettest. The cost is that arid and temperate
